@@ -22,24 +22,24 @@ def run_bracket():
     print(f"Winner of Group A is: {winner_a}")
     print(f"Winner of group B is: {winner_b}")
 
-    def play_group_matches(group_teams):
-        winners = []
-        print("Groups Matches: ")
-        for i in range(0, len(group_teams), 2):
-            team1 = group_teams[i]
-            team2 = group_teams[i + 1]
-            winner = random.choice([team1, team2])
-            winners.append(winner)
-            print(f"{team1} vs {team2} - Winner: {winner}")
-        print()
-        return winners
+def play_group_matches(group_teams):
+    winners = []
+    print("Groups Matches: ")
+    for i in range(0, len(group_teams), 2):
+        team1 = group_teams[i]
+        team2 = group_teams[i + 1]
+        winner = random.choice([team1, team2])
+        winners.append(winner)
+        print(f"{team1} vs {team2} - Winner: {winner}")
+    print()
+    return winners
 
-    def play_final_match(winner_a, winner_b):
-        print("Final Match: ")
-        winner = random.choice([winner_a, winner_b])
-        print(f"{winner_a} vs {winner_b} - Winner: {winner}")
-        print()
-        return winner
+def play_final_match(winner_a, winner_b):
+    print("Final Match: ")
+    winner = random.choice([winner_a, winner_b])
+    print(f"{winner_a} vs {winner_b} - Winner: {winner}")
+    print()
+    return winner
 
-    # Run the tournament
-    run_bracket()
+# Run the tournament
+run_bracket()
