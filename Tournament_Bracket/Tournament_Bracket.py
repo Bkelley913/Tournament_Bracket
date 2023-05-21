@@ -22,7 +22,7 @@ def run_bracket():
     print(f"Winner of Group A is: {winner_a}")
     print(f"Winner of group B is: {winner_b}")
 
-    def play_ground_matches(group_teams):
+    def play_group_matches(group_teams):
         winners = []
         print("Groups Matches: ")
         for i in range(0, len(group_teams), 2):
