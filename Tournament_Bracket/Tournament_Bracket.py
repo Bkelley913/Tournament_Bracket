@@ -1,3 +1,4 @@
+import tkinter as tk
 import random
 
 def run_bracket():
@@ -22,24 +23,46 @@ def run_bracket():
     print(f"Winner of Group A is: {winner_a}")
     print(f"Winner of group B is: {winner_b}")
 
+# GUI implementation
 def play_group_matches(group_teams):
     winners = []
-    print("Groups Matches: ")
+    results_text = "Group Matches:\n"
+    #print("Groups Matches: ")
     for i in range(0, len(group_teams), 2):
         team1 = group_teams[i]
         team2 = group_teams[i + 1]
         winner = random.choice([team1, team2])
         winners.append(winner)
-        print(f"{team1} vs {team2} - Winner: {winner}")
-    print()
+        results_text += f"{team1} vs {team2} - Winner: {winner}\n"
+        #print(f"{team1} vs {team2} - Winner: {winner}")
+    #print()
+    results_text += "\n"
+    results_label.config(text=results_text)
     return winners
 
 def play_final_match(winner_a, winner_b):
-    print("Final Match: ")
+    #print("Final Match: ")
+    results_text = "Final Match: \n"
     winner = random.choice([winner_a, winner_b])
-    print(f"{winner_a} vs {winner_b} - Winner: {winner}")
-    print()
+    #print(f"{winner_a} vs {winner_b} - Winner: {winner}")
+    results_text += f"{winner_a} vs {winner_b} - Winner: {winner}\n\n"
+    results_label.config(text=results_text)
+    #print()
     return winner
 
 # Run the tournament
-run_bracket()
+#run_bracket()
+
+window = tk.Tk()
+window.title("Tournament Bracket")
+
+title_label = tk.Label(window, text="Tournament Bracket")
+title_label.pack()
+
+results_label = tk.Label(window, text="Results will appear here.")
+results_label.pack()
+
+play_button = tk.Button(window, text="Run Tournament", command=run_bracket)
+play_button.pack()
+
+window.mainloop()
