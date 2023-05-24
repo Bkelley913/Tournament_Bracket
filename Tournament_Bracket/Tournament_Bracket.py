@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+import threading
 
 def run_bracket():
     # Define Teams
@@ -50,6 +51,10 @@ def play_final_match(winner_a, winner_b):
     #print()
     return winner
 
+def run_tournament():
+    tourament_thread = threading.Thread(target=run_bracket)
+    tourament_thread.start()
+
 # Run the tournament
 #run_bracket()
 
@@ -62,7 +67,7 @@ title_label.pack()
 results_label = tk.Label(window, text="Results will appear here.")
 results_label.pack()
 
-play_button = tk.Button(window, text="Run Tournament", command=run_bracket)
+play_button = tk.Button(window, text="Run Tournament", command=run_tournament)
 play_button.pack()
 
 window.mainloop()
