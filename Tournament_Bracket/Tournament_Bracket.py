@@ -70,4 +70,34 @@ results_label.pack()
 play_button = tk.Button(window, text="Run Tournament", command=run_tournament)
 play_button.pack()
 
+# Define the teams and their labels
+teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8",
+         "Team 9", "Team 10", "Team 11", "Team 12", "Team 13", "Team 14", "Team 15", "Team 16"]
+
+team_labels = []
+for team in teams:
+    label = tk.Label(window, text=team, relief="solid", borderwidth=1, padx=10, pady=5)
+    team_labels.append(label)
+
+# Arrange the team labels in a bracket format
+num_teams = len(teams)
+num_rounds = int(num_teams / 2)
+x_offset = 50
+y_offset = 100
+x_spacing = 200
+y_spacing = 40
+
+for round in range(num_rounds):
+    y_pos = y_offset + round * y_spacing
+    num_matches = int(num_teams / 2**(round + 1))
+    x_pos_left = x_offset + round * x_spacing
+    x_pos_right = x_offset + (num_rounds - round - 1) * x_spacing + x_spacing / 2
+
+    for match in range(num_matches):
+        label1 = team_labels[2 * match]
+        label2 = team_labels[2 * match + 1]
+        label1.place(x=x_pos_left, y=y_pos + match * 2 * y_spacing)
+        label2.place(x=x_pos_right, y=y_pos + match * 2 * y_spacing)
+
+# Start the GUI event loop
 window.mainloop()
